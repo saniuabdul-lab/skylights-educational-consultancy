@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Skylights Educational Consultancy</title>
+  <meta name="description" content="Skylights Educational Consultancy provides trusted guidance on admissions, scholarships, career counseling, and study abroad opportunities." />
+  <style>
+    body { margin: 0; font-family: Arial, Helvetica, sans-serif; line-height: 1.6; color: #222; }
+    header { background: #0b3c5d; color: #fff; padding: 40px 20px; }
+    header h1 { margin: 0; font-size: 2.2rem; }
+    header p { max-width: 700px; }
+    nav { background: #06293f; padding: 10px 20px; }
+    nav a { color: #fff; margin-right: 15px; text-decoration: none; font-weight: bold; }
+    section { padding: 40px 20px; max-width: 1000px; margin: auto; }
+    .services { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+    .card { border: 1px solid #ddd; padding: 20px; border-radius: 8px; }
+    footer { background: #06293f; color: #fff; text-align: center; padding: 20px; }
+    .cta { background: #f4f6f8; border-left: 5px solid #0b3c5d; padding: 20px; }
+    .whatsapp { position: fixed; bottom: 20px; right: 20px; background: #25d366; color: #fff; padding: 12px 18px; border-radius: 30px; text-decoration: none; font-weight: bold; }
+      .accordion { margin: 20px auto; border-radius: 12px; overflow: hidden; color:#fff; animation: fadeIn 1.5s ease; }
+    .accordion-btn { width:100%; padding:20px; font-size:1.2rem; text-align:left; background:rgba(0,0,0,0.6); color:#fff; border:none; cursor:pointer; }
+    .accordion-content { background:rgba(0,0,0,0.7); overflow:hidden; max-height:0; transition:max-height 0.5s ease; padding:0 20px; }
+    .accordion-content p, .accordion-content li { color:#f1f1f1; }
+    @keyframes fadeIn { from {opacity:0; transform:translateY(20px);} to {opacity:1; transform:translateY(0);} }
+  </style>
+</head>
+<body>
+
+<header style="text-align:center;">
+  <img src="sec-logo.png" alt="Skylights Educational Consultancy Logo" style="max-width:180px;margin-bottom:15px;" />
+  <h1>Skylights Educational Consultancy</h1>
+  <p>Professional support for school owners, administrators, and educators seeking sustainable growth, quality teaching, and effective school management.</p>
+</header>
+
+<nav>
+  <a href="#about">About Us</a>
+  <a href="#services">Services</a>
+  <a href="#why">Why Us</a>
+  <a href="#contact">Contact</a>
+</nav>
+
+<section id="about" class="accordion" style="background:url('https://images.unsplash.com/photo-1588072432836-e10032774350') center/cover no-repeat;">
+  <button class="accordion-btn">👥 About Us</button>
+  <div class="accordion-content">
+    <p>Skylights Educational Consultancy is a professional education services firm supporting schools, educators, and education-focused organizations across Nigeria.</p>
+    <p><strong>Lead Consultant:</strong> Sani Uduimoh Abdulkadir – education consultant with experience in school development, teacher training, and academic advisory.</p>
+  </div>
+</section>
+
+<section id="services" class="accordion" style="background:url('https://images.unsplash.com/photo-1523240795612-9a054b0db644') center/cover no-repeat;">
+  <button class="accordion-btn">📚 Our Services</button>
+  <div class="accordion-content">
+    <ul>
+      <li>Human Resource Services for Schools</li>
+      <li>Private Lesson & Home Tutoring</li>
+      <li>School Development & Setup</li>
+      <li>Professional Training for Teachers</li>
+      <li>Advisory Services for School Owners</li>
+    </ul>
+  </div>
+</section>
+
+<section id="scope">
+  <h2>Scope of Operation</h2>
+  <ul>
+    <li>Nursery, Primary, and Secondary Schools</li>
+    <li>Private Schools and Education Startups</li>
+    <li>Individual Learners and Parents</li>
+    <li>Teachers and School Administrators</li>
+  </ul>
+</section>
+
+<section id="pricing">
+  <h2>Service Approach & Fees</h2>
+  <p>Our services are offered on a project-based or retainer basis, depending on the nature and scope of engagement. Pricing is transparent and discussed after an initial consultation to ensure alignment with client needs.</p>
+</section>
+
+<section id="why" class="accordion" style="background:url('https://images.unsplash.com/photo-1509062522246-3755977927d7') center/cover no-repeat;">
+  <button class="accordion-btn">⭐ Why Choose Us</button>
+  <div class="accordion-content">
+    <ul>
+      <li>Deep understanding of Nigerian private schools</li>
+      <li>Structured, ethical, and confidential advisory</li>
+      <li>Results-focused school improvement</li>
+    </ul>
+  </div>
+</section>
+
+<section id="contact" class="accordion" style="background:url('https://images.unsplash.com/photo-1521791136064-7986c2920216') center/cover no-repeat;">
+  <button class="accordion-btn">📞 Contact Us</button>
+  <div class="accordion-content">
+    <p>Email: usqodr@gmail.com</p>
+    <p>Phone / WhatsApp: +2348038612058</p>
+    <p>Consultation strictly by appointment.</p>
+  </div>
+</section>
+
+<section id="testimonials">
+  <h2>Testimonials</h2>
+  <p><em>“Skylights Educational Consultancy provided clear guidance that helped us restructure our academic operations and staff management.”</em><br>— Private School Proprietor</p>
+</section>
+
+<footer>
+  <p>&copy; 2026 Skylights Educational Consultancy. All rights reserved.</p>
+</footer>
+
+<a class="whatsapp" href="https://wa.me/2348038612058">Chat on WhatsApp</a>
+
+<script>
+  const buttons = document.querySelectorAll('.accordion-btn');
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      btn.classList.toggle('active');
+      const content = btn.nextElementSibling;
+      content.style.maxHeight = content.style.maxHeight ? null : content.scrollHeight + 'px';
+    });
+  });
+</script>
+
+</body>
+</html>
