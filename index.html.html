@@ -41,6 +41,51 @@
     @keyframes fadeIn { from {opacity:0; transform:translateY(20px);} to {opacity:1; transform:translateY(0);} }
   </style>
 </head>
+  <script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+  import {
+    getAuth,
+    createUserWithEmailAndPassword,
+    signInWithEmailAndPassword,
+    GoogleAuthProvider,
+    signInWithPopup
+  } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyDlQuGeHdhju8Oez0hSa4kw3Fx8Tketeac",
+  authDomain: "skylights-educational-consult.firebaseapp.com",
+  projectId: "skylights-educational-consult",
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+  const provider = new GoogleAuthProvider();
+
+  window.signup = function () {
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+
+    createUserWithEmailAndPassword(auth, email, password)
+      .then(() => alert("Account created successfully"))
+      .catch(error => alert(error.message));
+  };
+
+  window.login = function () {
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+
+    signInWithEmailAndPassword(auth, email, password)
+      .then(() => alert("Login successful"))
+      .catch(error => alert(error.message));
+  };
+
+  window.googleLogin = function () {
+    signInWithPopup(auth, provider)
+      .then(() => alert("Google login successful"))
+      .catch(error => alert(error.message));
+  };
+</script>
+
 <body>
 
 <header style="text-align:center;">
@@ -139,4 +184,5 @@
 
 </body>
 </html>
+
 
