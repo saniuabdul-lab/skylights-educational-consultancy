@@ -14,6 +14,104 @@
   <title>Skylights Educational Consultancy</title>
   <meta name="description" content="Skylights Educational Consultancy provides trusted guidance on admissions, scholarships, career counseling, and study abroad opportunities." />
   <style>
+    /* Login icon */
+.login-trigger {
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  font-size: 22px;
+  background: #003366;
+  color: white;
+  padding: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+/* Modal background */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+/* Login card */
+.login-card {
+  background: white;
+  width: 100%;
+  max-width: 360px;
+  padding: 25px;
+  border-radius: 12px;
+  font-family: sans-serif;
+}
+
+.login-card h3 {
+  margin-bottom: 15px;
+}
+
+/* Inputs */
+.login-card label {
+  font-size: 14px;
+  display: block;
+  margin-top: 10px;
+}
+
+.login-card input {
+  width: 100%;
+  padding: 12px;
+  margin-top: 6px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+}
+
+/* Password field */
+.password-box {
+  position: relative;
+}
+
+.password-box .eye {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  opacity: 0.6;
+}
+
+/* Forgot password */
+.forgot {
+  text-align: right;
+  font-size: 13px;
+  margin: 10px 0;
+  color: #666;
+  cursor: pointer;
+}
+
+/* Buttons */
+.signin-btn {
+  width: 100%;
+  padding: 14px;
+  background: #9fd3c7;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.google-btn {
+  width: 100%;
+  margin-top: 10px;
+  padding: 12px;
+  background: #db4437;
+  color: white;
+  border: none;
+  border-radius: 8px;
+}
+
     body { margin: 0; font-family: Arial, Helvetica, sans-serif; line-height: 1.6; color: #222; }
     header { background: #0b3c5d; color: #fff; padding: 40px 20px; }
     header h1 { margin: 0; font-size: 2.2rem; }
@@ -115,6 +213,22 @@
   </style>
 </head>
   <script type="module">
+    import { sendPasswordResetEmail, onAuthStateChanged } 
+from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+
+window.resetPassword = function () {
+  const email = document.getElementById("email").value;
+
+  if (!email) {
+    alert("Please enter your email address first.");
+    return;
+  }
+
+  sendPasswordResetEmail(auth, email)
+    .then(() => alert("Password reset email sent."))
+    .catch(err => alert(err.message));
+};
+
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
   import {
     getAuth,
@@ -160,6 +274,10 @@
 </script>
 
 <body>
+  <div class="login-trigger" onclick="openLogin()">
+  🔐
+</div>
+
 <section id="auth" class="auth-section">
   <div class="auth-card">
     <h2>Client Access</h2>
@@ -262,8 +380,37 @@
 </footer>
 
 <a class="whatsapp" href="https://wa.me/2348038612058">Chat on WhatsApp</a>
+  <div id="loginModal" class="modal-overlay">
+  <div class="login-card">
+    <h3>Sign in</h3>
+
+    <label>Email Address</label>
+    <input type="email" id="email" placeholder="Enter your email">
+
+    <label>Password</label>
+    <div class="password-box">
+      <input type="password" id="password" placeholder="Input your password">
+      <span class="eye">👁</span>
+    </div>
+
+    <div class="forgot">Forgot Password?</div>
+
+    <button class="signin-btn" onclick="login()">Sign in</button>
+
+    <button class="google-btn" onclick="googleLogin()">Sign in with Google</button>
+  </div>
+</div>
+
 
 <script>
+  window.openLogin = function () {
+  document.getElementById("loginModal").style.display = "flex";
+};
+
+window.closeLogin = function () {
+  document.getElementById("loginModal").style.display = "none";
+};
+
   const buttons = document.querySelectorAll('.accordion-btn');
   buttons.forEach(btn => {
     btn.addEventListener('click', () => {
@@ -276,6 +423,7 @@
 
 </body>
 </html>
+
 
 
 
