@@ -38,7 +38,80 @@
     .accordion-btn { width:100%; padding:20px; font-size:1.2rem; text-align:left; background:rgba(0,0,0,0.6); color:#fff; border:none; cursor:pointer; }
     .accordion-content { background:rgba(0,0,0,0.7); overflow:hidden; max-height:0; transition:max-height 0.5s ease; padding:0 20px; }
     .accordion-content p, .accordion-content li { color:#f1f1f1; }
-    @keyframes fadeIn { from {opacity:0; transform:translateY(20px);} to {opacity:1; transform:translateY(0);} }
+    @keyframes fadeIn { from {opacity:0; transform:translateY(20px);} to {opacity:1; transform:translateY(0);}
+     .auth-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #002244, #0055aa);
+}
+
+.auth-card {
+  background: #ffffff;
+  padding: 30px;
+  width: 100%;
+  max-width: 420px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  text-align: center;
+}
+
+.auth-card h2 {
+  margin-bottom: 5px;
+  color: #003366;
+}
+
+.auth-card p {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.auth-card input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 12px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.primary-btn {
+  width: 100%;
+  padding: 12px;
+  background: #003366;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.secondary-btn {
+  width: 100%;
+  padding: 12px;
+  background: #eaeaea;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.divider {
+  margin: 15px 0;
+  font-size: 12px;
+  color: #999;
+}
+
+.google-btn {
+  width: 100%;
+  padding: 12px;
+  background: #db4437;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+                 }
   </style>
 </head>
   <script type="module">
@@ -87,16 +160,25 @@
 </script>
 
 <body>
-<section id="auth">
-  <h2>User Access</h2>
+<section id="auth" class="auth-section">
+  <div class="auth-card">
+    <h2>Client Access</h2>
+    <p>Sign in to manage your requests</p>
 
-  <input type="email" id="email" placeholder="Email address" required>
-  <input type="password" id="password" placeholder="Password" required>
+    <input type="email" id="email" placeholder="Email address" required>
+    <input type="password" id="password" placeholder="Password" required>
 
-  <button onclick="signup()">Sign Up</button>
-  <button onclick="login()">Sign In</button>
-  <button onclick="googleLogin()">Sign in with Google</button>
+    <button class="primary-btn" onclick="login()">Sign In</button>
+    <button class="secondary-btn" onclick="signup()">Create Account</button>
+
+    <div class="divider">or</div>
+
+    <button class="google-btn" onclick="googleLogin()">
+      Sign in with Google
+    </button>
+  </div>
 </section>
+
 
 <header style="text-align:center;">
   <img src="sec-logo.png" alt="Skylights Educational Consultancy Logo" style="max-width:180px;margin-bottom:15px;" />
@@ -194,6 +276,7 @@
 
 </body>
 </html>
+
 
 
 
