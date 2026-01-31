@@ -385,27 +385,66 @@ window.location.href = "services.html";
 </div>
 
 
-<script>
-  window.openLogin = function () {
-  document.getElementById("loginModal").style.display = "flex";
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  GoogleAuthProvider,
+  signInWithPopup,
+  sendPasswordResetEmail
+} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyDlQuGeHdhju8Oez0hSa4kw3Fx8Tketeac",
+  authDomain: "skylights-educational-consult.firebaseapp.com",
+  projectId: "skylights-educational-consult",
 };
 
-window.closeLogin = function () {
-  document.getElementById("loginModal").style.display = "none";
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const provider = new GoogleAuthProvider();
+
+// LOGIN
+window.login = function () {
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+
+  signInWithEmailAndPassword(auth, email, password)
+    .then((result) => {
+      const user = result.user;
+      localStorage.setItem("sec_user", user.email);
+      window.location.href = "services.html";
+    })
+    .catch(error => alert(error.message));
 };
 
-  const buttons = document.querySelectorAll('.accordion-btn');
-  buttons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      btn.classList.toggle('active');
-      const content = btn.nextElementSibling;
-      content.style.maxHeight = content.style.maxHeight ? null : content.scrollHeight + 'px';
-    });
-  });
+// GOOGLE LOGIN
+window.googleLogin = function () {
+  signInWithPopup(auth, provider)
+    .then((result) => {
+      const user = result.user;
+      localStorage.setItem("sec_user", user.email);
+      window.location.href = "services.html";
+    })
+    .catch(error => alert(error.message));
+};
+
+// RESET PASSWORD
+window.resetPassword = function () {
+  const email = document.getElementById("email").value;
+  if (!email) return alert("Enter your email first");
+
+  sendPasswordResetEmail(auth, email)
+    .then(() => alert("Password reset email sent"))
+    .catch(err => alert(err.message));
+};
 </script>
 
 </body>
 </html>
+
 
 
 
