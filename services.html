@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>SEC Services</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f5f7fb;
+    }
+
+    header {
+      background: #0b3c5d;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .services-container {
+      max-width: 1100px;
+      margin: 40px auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 25px;
+      padding: 20px;
+    }
+
+    .service-card {
+      background: white;
+      border-radius: 10px;
+      padding: 25px;
+      text-align: center;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .service-card:hover {
+      transform: translateY(-5px);
+      background: #0b3c5d;
+      color: white;
+    }
+
+    .logout {
+      position: fixed;
+      top: 15px;
+      right: 15px;
+      background: crimson;
+      color: white;
+      border: none;
+      padding: 10px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- PROTECTION SCRIPT -->
+<script>
+  const user = localStorage.getItem("sec_user");
+  if (!user) {
+    window.location.href = "index.html";
+  }
+</script>
+
+<header>
+  <h1>Skylights Educational Consultancy</h1>
+  <p>Select a Service</p>
+</header>
+
+<button class="logout" onclick="logout()">Logout</button>
+
+<div class="services-container">
+
+  <div class="service-card" onclick="selectService('Teacher Recruitment')">
+    Teacher Recruitment (HR)
+  </div>
+
+  <div class="service-card" onclick="selectService('Private Tutors')">
+    Private Lesson Tutors
+  </div>
+
+  <div class="service-card" onclick="selectService('School Development')">
+    School Development
+  </div>
+
+  <div class="service-card" onclick="selectService('Teacher Training')">
+    Professional Teacher Training
+  </div>
+
+  <div class="service-card" onclick="selectService('School Advisory')">
+    School Advisory Services
+  </div>
+
+</div>
+
+<script>
+  function selectService(service) {
+    localStorage.setItem("selected_service", service);
+    alert("You selected: " + service);
+  }
+
+  function logout() {
+    localStorage.removeItem("sec_user");
+    window.location.href = "index.html";
+  }
+</script>
+
+</body>
+</html>
